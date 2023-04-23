@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.1, created on 2023-04-17 22:05:21
+/* Smarty version 4.3.1, created on 2023-04-23 18:40:01
   from 'C:\xampp\htdocs\projekty\kalkulator3.0\app\calc_view.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.1',
-  'unifunc' => 'content_643da681097ad6_76427107',
+  'unifunc' => 'content_64455f6123a4b5_48698043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b3814dc2388bbd09f64f5976ed2d6bb616a9037f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projekty\\kalkulator3.0\\app\\calc_view.tpl',
-      1 => 1681761918,
+      1 => 1681766445,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_643da681097ad6_76427107 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64455f6123a4b5_48698043 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -32,7 +32,8 @@ function content_643da681097ad6_76427107 (Smarty_Internal_Template $_smarty_tpl)
 		<title>KalkulatorBMI</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['app_url']->value;?>
+/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -43,11 +44,7 @@ function content_643da681097ad6_76427107 (Smarty_Internal_Template $_smarty_tpl)
 			<div id="main">
 				<div class="inner">
 
-		<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
 				
-			</header>
 
 		<!-- Content -->
 			<section>
@@ -58,7 +55,7 @@ function content_643da681097ad6_76427107 (Smarty_Internal_Template $_smarty_tpl)
 				<hr class="major" />
 
 		<!-- Form -->
-			<h2 id="form">Podaj wagę oraz wiek</h2>
+			<h2 id="form">Podaj wagę oraz wzrost</h2>
 			<div class="row gtr-200">
 				<div class="col-6 col-12-medium">
 
@@ -69,20 +66,45 @@ function content_643da681097ad6_76427107 (Smarty_Internal_Template $_smarty_tpl)
 									<input type="text" name="waga" id="waga" value="" placeholder="waga" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<input type="text" name="wiek" id="wiek" value="" placeholder="wiek" />
+									<input type="text" name="wzrost" id="wzrost" value="" placeholder="wzrost" />
 								</div>
 								<!-- Break -->
 								<div class="col-12">
-									<select name="demo-category" id="demo-category">
-										<option value="">wybierz płeć</option>
-										<option value="1">kobieta</option>
-										<option value="1">mężczyzna</option>
+									<select name="plec" id="plec">
+										<option value="k">wybierz płeć</option>
+										<option value="k">kobieta</option>
+										<option value="m">mężczyzna</option>
 									</select>
-									<button type='submit' value='oblicz bmi'>oblicz</button>  
-								</div>																													
+									
+								</div>		
+							<div class="col-12"><button type='submit' value='oblicz'>oblicz</button></div>  
+							<div class="col-12">
+																																			
 						</form>
-			<div> <?php echo $_smarty_tpl->tpl_vars['result']->value;?>
- </div>
+			<h4> twoje BMI wynosi: <?php echo sprintf("%.2f",$_smarty_tpl->tpl_vars['result']->value);?>
+ </h4>
+			<h4> wynik: <span style="color:<?php if ($_smarty_tpl->tpl_vars['przedzial']->value == 'niedowaga' || $_smarty_tpl->tpl_vars['przedzial']->value == 'nadwaga') {?>#f86c6c <?php } else { ?> #98fb98 <?php }?>"><?php echo $_smarty_tpl->tpl_vars['przedzial']->value;?>
+ </span></h4>
+			<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['messages']->value, 'message');
+$_smarty_tpl->tpl_vars['message']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['message']->value) {
+$_smarty_tpl->tpl_vars['message']->do_else = false;
+?>
+				<li><?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+!</li>
+			<?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>	
+
+			</div>
+			<header id="header">
+			<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+			
+		</header>
+			</div>
+
+			
 
 		<!-- Scripts -->
 			<?php echo '<script'; ?>
